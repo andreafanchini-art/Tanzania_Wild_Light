@@ -1,0 +1,347 @@
+:root {
+  --ink: #f8f3e8;
+  --muted: #b9b09f;
+  --gold: #d6a85b;
+  --gold-light: #f1d39a;
+  --night: #110d0a;
+  --panel: #211812;
+  --line: rgba(241, 211, 154, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 50% -10%, #5a3920 0, transparent 38rem),
+    var(--night);
+  line-height: 1.6;
+}
+
+.site-header { order: 1; }
+.hero { order: 2; }
+#lake-manyara { order: 3; }
+#ngorongoro { order: 4; }
+#serengeti-sud { order: 5; }
+#serengeti-nord { order: 6; }
+#lake-natron { order: 7; }
+#tarangire { order: 8; }
+.site-footer { order: 9; }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.15rem clamp(1.25rem, 4vw, 4rem);
+  border-bottom: 1px solid rgba(241, 211, 154, 0.12);
+  background: rgba(17, 13, 10, 0.88);
+  backdrop-filter: blur(16px);
+}
+
+.logo {
+  color: var(--gold-light);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.logo span {
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.3rem 1.15rem;
+}
+
+.main-nav a {
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.main-nav a:hover,
+.main-nav a:focus-visible {
+  color: var(--gold-light);
+}
+
+.hero {
+  display: grid;
+  min-height: min(78vh, 760px);
+  place-items: center;
+  padding: 8rem 1.5rem;
+  text-align: center;
+  background:
+    linear-gradient(180deg, rgba(17, 13, 10, 0.08), var(--night)),
+    radial-gradient(ellipse at center, rgba(164, 108, 47, 0.28), transparent 60%);
+}
+
+.hero-text {
+  max-width: 780px;
+}
+
+.eyebrow {
+  margin-bottom: 1.25rem;
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  color: var(--ink);
+  font-family: Georgia, serif;
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+}
+
+.hero h1::after {
+  display: block;
+  width: 3.5rem;
+  height: 1px;
+  margin: 2rem auto 1.5rem;
+  background: var(--gold);
+  content: "";
+}
+
+.hero-lead {
+  color: var(--muted);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
+.hero-link {
+  display: inline-flex;
+  gap: 0.8rem;
+  margin-top: 2.5rem;
+  color: var(--gold-light);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.hero-link span {
+  font-size: 1.2rem;
+  line-height: 0.8;
+}
+
+.park-section {
+  width: min(100% - 3rem, 1240px);
+  margin: 0 auto;
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  scroll-margin-top: 4rem;
+}
+
+.park-section + .park-section {
+  border-top: 1px solid var(--line);
+}
+
+.park-section h2 {
+  color: var(--gold-light);
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+
+.park-desc {
+  max-width: 620px;
+  margin: 0.7rem 0 2.2rem;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.8rem;
+}
+
+.gallery img {
+  display: block;
+  width: 100%;
+  height: 230px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+  cursor: zoom-in;
+  object-fit: cover;
+  transition: transform 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease;
+}
+
+.gallery img:hover,
+.gallery img:focus-visible {
+  position: relative;
+  z-index: 1;
+  transform: translateY(-4px);
+  filter: saturate(1.12);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  background: rgba(5, 3, 2, 0.96);
+}
+
+.lightbox.hidden {
+  display: none;
+}
+
+.lightbox img {
+  max-width: min(92vw, 1400px);
+  max-height: 88vh;
+  border-radius: 2px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid rgba(241, 211, 154, 0.4);
+  border-radius: 50%;
+  background: rgba(17, 13, 10, 0.65);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  transform: translateY(-50%);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.lightbox-nav:hover,
+.lightbox-nav:focus-visible {
+  border-color: var(--gold-light);
+  background: rgba(214, 168, 91, 0.25);
+}
+
+.lightbox-prev {
+  left: 1.5rem;
+}
+
+.lightbox-next {
+  right: 1.5rem;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 2.5rem;
+  font-weight: 200;
+  line-height: 1;
+}
+
+.site-footer {
+  padding: 3rem 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .main-nav {
+    justify-content: flex-start;
+    gap: 0.35rem 0.85rem;
+  }
+
+  .main-nav a {
+    font-size: 0.65rem;
+  }
+
+  .hero {
+    min-height: 70vh;
+    padding: 6rem 1.25rem;
+  }
+
+  .park-section {
+    width: min(100% - 2rem, 1240px);
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .gallery img {
+    height: 160px;
+  }
+
+  .lightbox {
+    padding: 1rem;
+  }
+
+  .lightbox-nav {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .lightbox-prev {
+    left: 0.6rem;
+  }
+
+  .lightbox-next {
+    right: 0.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
